@@ -24,7 +24,7 @@ let regex: RegExp = /\w+/g
 
 // arrays
 
-let stringArr = ['one', 'two', 'three']
+/* let stringArr = ['one', 'two', 'three']
 
 let guitar = ['Start', 'Les Paul', 5150]
 
@@ -77,4 +77,28 @@ enum Grade {
   A,
 }
 
-console.log(Grade.U)
+console.log(Grade.U) */
+
+// type aliases
+type stringOrNumber = string | number
+type stringOrNumberArray = (string | number)[]
+
+type Guitarist = {
+  name: string
+  active?: boolean
+  albums: stringOrNumberArray
+}
+
+// literal type
+let myName: 'vikram'
+
+let userName: 'Dave' | 'John' | 'Amy'
+userName = 'Amy'
+// userName = 'Racheal' // error message
+
+// functions
+const add = (a: number, b: number): number => a + b
+
+const logMsg = (message: any): void => {
+  console.log(message)
+}
