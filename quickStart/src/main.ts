@@ -79,7 +79,7 @@ enum Grade {
 
 console.log(Grade.U) */
 
-// type aliases
+/* // type aliases
 type stringOrNumber = string | number
 type stringOrNumberArray = (string | number)[]
 
@@ -111,10 +111,11 @@ let subtract = function (c: number, d: number): number {
   return a
 } */
 
+/* 
 type mathFunc = (a: number, b: number) => number
-/* interface mathFunc1 {
+ interface mathFunc1 {
   (a: number, b: number): number
-} */
+} 
 
 let multiply: mathFunc = function (c, d) {
   return c * d
@@ -153,4 +154,35 @@ const numberOrString = (value: string | number): string => {
   if (isNumber(value)) return 'number'
   if (isString(value)) return 'string'
   return createErr('this should be a string')
+} */
+
+// type casting or type casting
+type One = string
+type Two = string | number
+type Three = 'hello'
+
+// convert to less or more specific type
+let a: One = 'hello'
+let b = a as Two // less specific type
+let c = b as Three // more specific type
+
+// this is another way to assign a type
+// but this is not often used because it can't be used in tsx file
+let d = <One>'World'
+let e = <number | string>45
+
+const addOrConcat = (
+  a: number,
+  b: number,
+  c: 'add' | 'concat'
+): number | string => {
+  if (c === 'add') return a + b
+  return '' + a + b
 }
+let myVal: string = addOrConcat(2, 2, 'concat') as string
+
+// be carefull TS sees no problem - but a string is returned
+let nextVal: number = addOrConcat(1, 1, 'add') as number
+
+// 10 as string // error message
+(10 as unknown) as string // allowed and known as double castig
