@@ -102,3 +102,55 @@ const add = (a: number, b: number): number => a + b
 const logMsg = (message: any): void => {
   console.log(message)
 }
+
+let subtract = function (c: number, d: number): number {
+  return c - d
+}
+
+/* function multiply(f: number, a: number, b: number): number {
+  return a
+} */
+
+type mathFunc = (a: number, b: number) => number
+/* interface mathFunc1 {
+  (a: number, b: number): number
+} */
+
+let multiply: mathFunc = function (c, d) {
+  return c * d
+}
+
+const addAll = (a: number, b?: number, c: number = 5): number => {
+  if (b !== undefined) {
+    return a + b + c
+  }
+  return a + c
+}
+
+// Rest parameters
+const total = (a: number, ...nums: number[]): number => {
+  return a + nums.reduce((prev, curr) => prev + curr)
+}
+
+console.log(total(1, 2, 5))
+
+const createErr = (errMsg: string): never => {
+  throw new Error(errMsg)
+}
+
+// infinite loop also returns a never type
+
+const isNumber = (value: any): boolean => {
+  return typeof value === 'number' ? true : false
+}
+
+const isString = (value: any): boolean => {
+  return typeof value === 'string' ? true : false
+}
+
+// use of never type
+const numberOrString = (value: string | number): string => {
+  if (isNumber(value)) return 'number'
+  if (isString(value)) return 'string'
+  return createErr('this should be a string')
+}
