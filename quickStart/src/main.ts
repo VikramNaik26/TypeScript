@@ -185,4 +185,15 @@ let myVal: string = addOrConcat(2, 2, 'concat') as string
 let nextVal: number = addOrConcat(1, 1, 'add') as number
 
 // 10 as string // error message
-(10 as unknown) as string // allowed and known as double castig
+10 as unknown as string // allowed and known as double castig
+
+// THE DOM
+const img = document.querySelector('img')!
+// const img = document.querySelector('img') as HTMLImageElement
+// non null assertion
+// const myImg = document.getElementById('image')!
+
+const myImg = document.getElementById('image') as HTMLImageElement
+
+img.src
+myImg.src
