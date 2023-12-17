@@ -1,5 +1,14 @@
 "use strict";
 // utitlity types
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 const updateAssignment = (assign, propsToUpdate) => {
     return Object.assign(Object.assign({}, assign), propsToUpdate);
 };
@@ -31,4 +40,29 @@ const gradeData = {
     Kelly: { assign1: 1, assign2: 2 },
     Sara: { assign1: 1, assign2: 5 },
 };
-// Pick and Omit
+const score = {
+    studentId: 'JK063',
+    grade: 10,
+};
+const preview = {
+    title: 'final grade',
+};
+// return type
+// type newAssign = { title: string; points: number }
+const createNewAssign = (title, points) => {
+    return { title, points };
+};
+const tsAssign = createNewAssign('Utility Types', 100);
+const assignArgs = ['Generics', 100];
+const assign2 = createNewAssign(...assignArgs);
+console.log(assign2);
+const fetchUsers = () => __awaiter(void 0, void 0, void 0, function* () {
+    const data = yield fetch('https://jsonplaceholder.typicode.com/users').then(res => {
+        return res.json();
+    }).catch(err => {
+        if (err instanceof Error)
+            console.log(err.message);
+    });
+    return data;
+});
+fetchUsers().then(users => console.log(users));
